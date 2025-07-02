@@ -4,6 +4,36 @@
 
 A community-driven knowledge hub and production command library for Claude Code custom commands. Features battle-tested commands for daily development workflows, comprehensive learning guides, and a collaborative space for command evolution and improvement.
 
+## ⚡ Ready to Use Our Custom Commands? (For the Impatient 😊)
+
+**Warning:** This script will definitely NOT empty your bank account, drain your crypto wallet, or order 47 pizzas to your address. We promise it only does boring command management stuff.
+
+**Still paranoid?** Ask Claude to audit it with this prompt:
+```
+Please audit the bash script at tools/scripts/sh/manage_commands.sh for security. 
+Specifically check if it:
+(1) Makes network calls or external connections
+(2) Modifies system files outside the project directory
+(3) Accesses sensitive data (passwords, keys, personal files)
+(4) Executes remote code or downloads external scripts
+(5) Has any malicious or suspicious behavior
+
+Provide a detailed security assessment with your findings.
+```
+They'll confirm it's just doing local file management (and probably roast our bash coding style 😅).
+
+```bash
+./tools/scripts/sh/manage_commands.sh
+```
+
+**What this script ACTUALLY does:**
+- **Installs commands** - Copies battle-tested commands from this repo to your Claude setup
+- **Updates commands** - Keeps your existing commands in sync with latest versions  
+- **Lists commands** - Shows what you have installed with nice formatting
+- **Removes commands** - Safely deletes commands with backups
+
+---
+
 ## 🧠 The Philosophy: Why Prompts Are the New Code
 
 > "Fast and easy access to compute is the winning condition for engineers in the generative AI age"
@@ -78,6 +108,7 @@ Focused, actionable checklists for ensuring command quality throughout the devel
 *Modular checklists covering development lifecycle, domain expertise, and quick reference validation - designed for daily use by individuals and teams.*
 
 ## 🚀 Quick Start
+
 
 ### **New to Custom Commands?**
 1. **[📖 Start Here: Custom Commands Overview](guides/custom-commands/01-overview.md)** - Learn what custom commands are and why they're powerful
