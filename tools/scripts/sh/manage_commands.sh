@@ -2988,7 +2988,7 @@ handle_embedded_dependencies_on_copy() {
 handle_embedded_dependencies_on_update() {
   local command_path="$1"
   local claude_root="$2"
-  local dependencies_before="$3"
+  local dependencies_before="${3:-}"
 
   [[ -z "$command_path" || -z "$claude_root" ]] && return $SUCCESS
 

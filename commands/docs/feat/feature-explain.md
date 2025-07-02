@@ -92,7 +92,7 @@ Who will primarily read this documentation?
 • Code snippets with implementation details
 • Technical terminology and patterns
 • Architecture diagrams and data flows
-• Performance and security considerations
+• Integration patterns and data flow
 • Test strategies and edge cases
 
 **2. Mixed (Technical + Product Team)**  
@@ -140,21 +140,20 @@ Choose how comprehensive the analysis should be:
 • Primary integration points
 
 ❌ **Excludes:**
-• Comprehensive test suite analysis
-• All configuration variations
-• Complex edge cases
-• Performance deep-dive
+• Complete test suite analysis
+• All configuration file variations
+• Complex business logic edge cases
+• Detailed component interaction patterns
 
 **3. Deep** - **Maximum Detail**
 📋 **Includes:**
 • Everything from Medium +
-• Complete test suite analysis (coverage, scenarios, edge cases)
+• Complete test suite analysis (test scenarios and edge cases)
 • All configuration files and environment setup
-• Comprehensive error handling and validation
+• Comprehensive error handling and validation flows
 • Full integration point mapping
-• Performance characteristics and bottlenecks
-• Security considerations
-• Future enhancement opportunities
+• Detailed business logic flows and decision points
+• Complete component interaction patterns
 
 ⚠️ **Time Consideration:** Deep analysis may take significant time for complex features.
 
@@ -194,14 +193,14 @@ grep -r "feature-service" --include="*.java" src/
 
 **Additional for Deep depth:**
 ```bash
-# Comprehensive test analysis
+# Complete test analysis
 find . -path "*/test/*" -name "*.java" | xargs grep -l "feature-keywords"
 
-# All configuration variations
+# All configuration file variations
 find . -name "*.yml" -o -name "*.xml" -o -name "*.properties" | xargs grep -l "feature"
 
-# Performance and security analysis
-grep -r "cache\|performance\|security\|validation" {feature-files}
+# Business logic and validation flows
+grep -r "validation\|business\|logic\|workflow" {feature-files}
 
 # Full dependency mapping
 grep -r "import.*{feature}" src/ | cut -d: -f1 | sort | uniq
@@ -270,7 +269,7 @@ Generate appropriate content structure:
 Include depth-appropriate sections:
 - **Shallow**: Basic components and flows only
 - **Medium**: + Configuration analysis + Key tests + Basic integrations  
-- **Deep**: + Complete test analysis + All configs + Performance + Security
+- **Deep**: + Complete test analysis + All configs + Business logic flows + Component interactions
 
 ## Task 7: Save and Present Results ✅
 
@@ -325,7 +324,7 @@ Present content verification option with clear cost/benefit analysis:
 • Validates all technical claims against actual codebase
 • Prevents hallucination in generated documentation  
 • Provides confidence scoring and quality assessment
-• Flags unverifiable content for manual review
+• Flags unverifiable content for manual verification
 
 **Resource Requirements:**
 • **Time:** Additional processing time for verification analysis
