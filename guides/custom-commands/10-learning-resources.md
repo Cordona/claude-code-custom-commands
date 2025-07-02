@@ -111,7 +111,9 @@ This video demonstrates advanced patterns from our [Advanced Workflows Guide](04
 1. Complete Foundation Mastery above
 2. **[Advanced Workflows](04-advanced-workflows.md)** - Multi-step automation patterns
 3. **[Best Practices](05-best-practices.md)** - Professional development techniques
-4. **Build command libraries** - Create reusable automation for your team
+4. **[Quality Assurance](07-quality-assurance.md)** - Testing frameworks and quality metrics
+5. **[Troubleshooting](08-troubleshooting.md)** - Debug issues and resolve problems
+6. **Build command libraries** - Create reusable automation for your team
 
 ### **👥 Team Implementation (Ongoing)**
 1. Complete Advanced Automation above
@@ -142,7 +144,9 @@ Found a great video, article, or tool that would help others learn custom comman
 
 ## 📞 Need More Help?
 
-- **[Best Practices Guide](05-best-practices.md)** - Troubleshooting and common issues
+- **[Best Practices Guide](05-best-practices.md)** - Professional development techniques
+- **[Quality Assurance Guide](07-quality-assurance.md)** - Testing and validation strategies
+- **[Troubleshooting Guide](08-troubleshooting.md)** - Debug issues and common problems
 - **[Command Examples](../../commands/)** - Real implementations for reference
 - **[Official Documentation](https://docs.anthropic.com/en/docs/claude-code)** - Authoritative source for Claude Code features
 

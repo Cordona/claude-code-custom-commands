@@ -5,210 +5,71 @@ allowed-tools: ["Bash"]
 
 # Git Configuration Setup
 
-Think about the optimal Git configuration strategy for the user's development environment.
+Think strategically about establishing comprehensive Git identity and signing configuration for the user's development environment.
 
-Execute each task in the logical sequence to set up complete Git identity and signing configuration.
+Execute each task to create a professional, secure Git configuration tailored to their workflow needs.
 
-## Task 1: Current State Analysis 🔍
+## Task 1: Environment Analysis 🔍
 
-Run git configuration analysis to understand the current setup.
+Analyze current git configuration state and repository context to understand setup requirements.
 
-Examine:
-- Current user.name and user.email settings
-- GPG signing configuration and available keys
-- Whether configuration is global or local
-- Repository context and team requirements
+**Assessment Strategy:**
+- Evaluate existing identity configuration (name, email, scope)
+- Assess GPG signing setup and available keys
+- Assess current hooks configuration path (core.hooksPath)
+- Understand repository context and team requirements
+- Identify configuration gaps or optimization opportunities
 
-Present a clear summary of the current state.
+Present comprehensive analysis with intelligent recommendations for configuration scope (global vs local).
 
-## Task 2: Configuration Scope Selection 🎯
+## Task 2: Identity Configuration 👤
 
-Based on the current repository and user setup, recommend configuration scope.
+Establish or update fundamental Git identity settings with validation and preview.
 
-**Configuration Scope Options:**
-1. **Global** 🌍 - Apply to all repositories on this machine (`git config --global`)
-2. **Local** 📁 - Apply only to current repository (`git config --local`)
-3. **Mixed** 🔄 - Set global defaults, with local overrides for this project
+**Configuration Approach:**
+- Review current identity settings and assess completeness
+- Gather required identity information with format validation
+- Present commit preview showing how identity will appear
+- Apply configuration using appropriate scope and commands
 
-**Ask the user:**
-"I recommend: **[your-recommendation]** because [reasoning].
+Ensure professional identity setup that meets development standards.
 
-Your choice:
-1. Accept recommendation
-2. Choose different scope
-3. Explain the differences"
+## Task 3: GPG Signing Setup 🔐
 
-## Task 3: User Identity Configuration 👤
+Configure commit and tag signing based on available GPG keys and user preferences.
 
-Configure the fundamental Git identity settings.
+**GPG Strategy:**
+- Discover and evaluate available GPG keys matching configured email
+- Assess key validity, expiration, and suitability for signing
+- Present clear options: use existing key, create new key, or skip signing
+- Configure GPG signing settings if key is selected
 
-**Current Identity:**
-- Name: [current-name or "Not set"]
-- Email: [current-email or "Not set"]
+Handle key discovery intelligently with appropriate fallback options.
 
-**Identity Setup:**
-1. **Name Configuration**
-   - Current: [show current value]
-   - Suggested: [if can be improved]
-   - Prompt: "Enter your full name for Git commits:"
+## Task 4: Workflow Enhancements ⚙️
 
-2. **Email Configuration**
-   - Current: [show current value]
-   - Suggested: [if can be improved]
-   - Prompt: "Enter your email address for Git commits:"
+Offer optional Git configuration enhancements for improved development workflow.
 
-**Show commit preview:**
-"Your commits will appear as: **[Name] <[email]>**
+**Enhancement Categories:**
+- **Signing Configuration:** Commit and tag signing preferences
+- **Editor & Templates:** Commit message editor and template settings
+- **Useful Aliases:** Common shortcuts (st, co, br, last, etc.)
+- **Hooks Configuration:** Git hooks path setup (default `.git/hooks` or custom location)
+- **Workflow Settings:** Push behavior, merge strategies, other optimizations
 
-Confirm this identity? (y/n)"
+Present options with clear benefits and apply selected configurations.
 
-## Task 4: GPG Key Discovery & Selection 🔐
+## Task 5: Configuration Application & Validation ✅
 
-Analyze available GPG keys and configure signing.
+Present complete configuration summary for approval and apply all settings with comprehensive validation.
 
-**GPG Key Analysis:**
-Run `gpg --list-secret-keys --keyid-format=long` to find available keys.
+**Application Process:**
+- Display comprehensive configuration summary with scope and settings
+- Offer approval options (apply all, modify, show commands, cancel)
+- Execute approved configurations with proper error handling
+- Validate all settings were applied successfully
+- Test GPG signing functionality if enabled
 
-**Key Evaluation:**
-- Match keys to the configured email address
-- Check key expiration status
-- Identify the best key for signing
+Provide clear success confirmation with active configuration summary and next steps.
 
-**Present findings and options:**
-
-### If keys are found:
-"Found GPG keys for your email:
-- **Active Key**: [key-id] (expires: [date])
-- **Status**: [valid/expired/expiring-soon]
-
-Your choice:
-1. Use this key for Git signing
-2. Select different key
-3. Skip GPG signing
-4. Create new GPG key"
-
-### If no keys found:
-"No GPG keys found for [email].
-
-Your choice:
-1. Create new GPG key (recommended)
-2. Use existing key with different email
-3. Skip GPG signing for now
-4. Get help with GPG setup"
-
-## Task 5: Advanced Configuration Options ⚙️
-
-Configure additional Git settings for improved workflow.
-
-**Optional Enhancements:**
-
-### GPG Signing Settings
-If GPG key selected:
-- `commit.gpgsign = true` - Sign all commits
-- `tag.gpgsign = true` - Sign all tags
-- `gpg.program` - GPG program path (if needed)
-
-### Commit Message Configuration
-- Set up commit message template
-- Configure preferred editor (nano, vim, code, etc.)
-- Set up commit message validation
-
-### Git Aliases & Shortcuts
-Suggest useful aliases:
-- `git st` → `git status`
-- `git co` → `git checkout`
-- `git br` → `git branch`
-- `git last` → `git log -1 HEAD`
-
-**Ask the user:**
-"Which additional configurations would you like?
-1. All recommended settings
-2. Only GPG signing
-3. Custom selection
-4. Skip advanced options"
-
-## Task 6: Apply Configuration ✅
-
-Present complete configuration summary and apply changes.
-
-**Configuration Summary:**
-```
-Scope: [global/local]
-User Name: [name]
-User Email: [email]
-GPG Signing: [enabled/disabled]
-GPG Key: [key-id or "None"]
-Additional Settings: [list selected options]
-```
-
-**Git Commands to Execute:**
-```bash
-git config [--global/--local] user.name "[name]"
-git config [--global/--local] user.email "[email]"
-[Additional git config commands based on selections]
-```
-
-**Ask for final confirmation:**
-"Ready to apply this configuration?
-
-Your choice:
-1. ✅ Apply all settings
-2. 📝 Modify something first
-3. 👀 Show exact commands that will run
-4. ❌ Cancel configuration"
-
-### Execute approved configuration
-Run the git config commands and confirm each was successful.
-
-## Task 7: Validation & Testing 🧪
-
-Verify the configuration was applied correctly and test functionality.
-
-**Configuration Verification:**
-Run verification commands to confirm settings:
-- `git config [scope] --list | grep user`
-- `git config [scope] --list | grep gpg`
-- Check GPG key accessibility
-
-**Testing Process:**
-
-### Identity Test
-Show how commits will appear:
-```bash
-echo "Test commit preview:"
-echo "Author: $(git config user.name) <$(git config user.email)>"
-```
-
-### GPG Signing Test (if enabled)
-Create a test commit to verify GPG signing:
-```bash
-# Create temporary test
-echo "test" > .git-config-test
-git add .git-config-test
-git commit -m "Test GPG signing configuration"
-git verify-commit HEAD
-git reset --hard HEAD~1
-rm .git-config-test
-```
-
-**Results Summary:**
-- ✅ Identity configuration: [status]
-- ✅ GPG signing: [status/working/not-configured]
-- ✅ Additional settings: [status]
-
-**If issues found:**
-Provide troubleshooting guidance:
-- GPG key trust issues
-- Path configuration problems
-- Permission or access issues
-
-**Success confirmation:**
-"🎉 Git configuration completed successfully!
-
-**Summary:**
-- Name: [name]
-- Email: [email]
-- GPG Signing: [status]
-- Scope: [global/local]
-
-You're ready to make commits with your new configuration!"
+**Success Outcome:** Professional Git configuration ready for development workflow with proper identity, signing, and enhancements as selected.

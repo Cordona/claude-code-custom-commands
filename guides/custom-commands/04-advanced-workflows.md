@@ -48,6 +48,8 @@ Advanced workflows transform custom commands from simple prompt templates into *
 - **Code Quality Audits:** Multi-stage analysis and reporting
 - **Migration Planning:** Complex change analysis and planning
 - **Testing Strategy Development:** Comprehensive test planning and implementation
+- **Content Verification Workflows:** Generate → Verify → Report → Fix cycles
+- **Embedded Framework Integration:** User choice → Framework execution → Results synthesis
 
 #### ❌ **Avoid for:**
 - Simple, one-off tasks
@@ -310,6 +312,40 @@ With full context from Tasks 1-2, perform detailed examination
 ## Task 4: Synthesis
 Generate comprehensive documentation using all previous findings
 ```
+
+---
+
+## Advanced Integration Patterns
+
+### Embedded Framework Integration
+
+Advanced workflows can leverage **embedded commands** - self-contained framework components that provide sophisticated functionality to multiple consumer commands.
+
+**Common Pattern:** Generation → User Choice → Framework Execution → Results
+
+**Example Integration:**
+```markdown
+## Task 6: Prompt User for Content Verification ⚡
+Present verification option with clear cost/benefit analysis:
+- Benefits: Validates claims against codebase, prevents hallucination
+- Resources: Additional processing time and token usage
+
+## Task 7: Execute Content Verification Framework 🔍
+[Only if user selected 'y']
+Execute `.claude/embedded/verify-technical-content.md` for comprehensive validation.
+
+## Task 8: Present Enhanced Results
+Combine generation and verification results for quality-assured documentation.
+```
+
+**Integration Benefits:**
+- **Reusable functionality** across multiple commands
+- **Single source of truth** for complex domain logic
+- **Automatic framework evolution** benefits all consumers
+- **Professional-grade implementation** with comprehensive error handling
+
+**For complete embedded command architecture, implementation patterns, and development guidelines:**
+→ **[Embedded Commands Guides](../embedded/)** - Comprehensive architecture and framework development documentation
 
 ---
 

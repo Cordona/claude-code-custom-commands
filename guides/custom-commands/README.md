@@ -12,7 +12,7 @@ This guide series is **exclusively focused** on Claude Code's custom commands fe
 
 *Follow this numbered sequence for optimal learning*
 
-### **Foundation**
+### **Foundation (Start Here)**
 1. **[📖 Custom Commands Overview](01-overview.md)** ✅
    - What custom commands are and how they work
    - Core concepts and immediate benefits  
@@ -25,13 +25,13 @@ This guide series is **exclusively focused** on Claude Code's custom commands fe
    - Team collaboration setup
    - Command-specific troubleshooting
 
-### **Mastery**
 3. **[📖 Syntax Reference](03-syntax.md)** ✅
    - Complete command syntax documentation
    - Multi-argument handling with practical examples
    - YAML frontmatter (allowed-tools, description)
    - Dynamic content and security best practices
 
+### **Advanced Development**
 4. **[🚀 Advanced Workflows](04-advanced-workflows.md)** ✅
    - Multi-step command orchestration
    - Thinking mode integration and planning
@@ -39,26 +39,52 @@ This guide series is **exclusively focused** on Claude Code's custom commands fe
    - Real-world workflow examples
 
 5. **[✨ Best Practices](05-best-practices.md)** ✅
-   - Professional command development from beginner to advanced
-   - Performance optimization and security best practices
-   - Team collaboration and quality assurance techniques
-   - Troubleshooting guide and debugging strategies
+   - Professional command creation and development patterns
+   - Performance optimization and efficient design
+   - Prompt engineering excellence and workflow design
 
-6. **[📚 Learning Resources](06-resources.md)** ✅
-   - Curated YouTube videos and external learning content
-   - Official documentation and technical references
-   - Community tools and development resources
-   - Structured learning paths and recommendations
+### **Specialized Topics**
+6. **[🔒 Security](06-security.md)** ✅
+   - Security-first command design and data protection
+   - Tool restrictions and principle of least privilege
+   - Command lifecycle security and governance
+
+7. **[🎯 Quality Assurance](07-quality-assurance.md)** ✅
+   - Systematic testing and validation strategies
+   - Quality metrics and performance benchmarks
+   - Continuous improvement and feedback integration
+
+8. **[🔧 Troubleshooting](08-troubleshooting.md)** ✅
+   - Debug common workflow and confirmation issues
+   - Tool selection and context management problems
+   - Anti-pattern recognition and resolution strategies
+
+### **Team & Organization**
+9. **[👥 Team Collaboration](09-team-collaboration.md)** ✅
+   - Organizational setup and team onboarding
+   - Collaboration patterns and governance
+   - Cross-team integration and sustainability
+
+10. **[📚 Learning Resources](10-learning-resources.md)** ✅
+    - Curated YouTube videos and external learning content
+    - Official documentation and technical references
+    - Community tools and development resources
+    - Structured learning paths and recommendations
+
 
 ---
 
 ## 🎯 **Current Status: Complete Learning System**
 
 **✅ What's Ready Now:**
-- Complete foundation knowledge (guides 1-6)
-- Professional-grade best practices and troubleshooting
-- Advanced workflow patterns and automation techniques
+- Complete foundation knowledge (guides 1-10)
+- Professional-grade best practices and advanced workflow patterns
+- Dedicated security, quality assurance, and troubleshooting guidance
+- Team collaboration and organizational setup strategies
 - Curated external resources and learning paths
+
+**📚 For Advanced Architecture:**
+- **[Embedded Commands Guides](../embedded/)** - Comprehensive architecture and framework development guides
 
 **📋 Planned for Future Development:**
 - Real-world example collections
@@ -81,7 +107,7 @@ This guide series is **exclusively focused** on Claude Code's custom commands fe
 → **[Install Commands](../../commands/)** - Add battle-tested commands to your workflow
 
 ### **Looking for Videos & Resources?**
-→ **[Learning Resources](06-resources.md)** - Curated videos, documentation, and external content
+→ **[Learning Resources](10-learning-resources.md)** - Curated videos, documentation, and external content
 
 ### **Need Help?**
 → **[Main Project](../../README.md)** - Project overview and additional resources
@@ -128,12 +154,25 @@ Help improve this guide series and the command library:
 - **Contribute knowledge** - Real-world insights and best practices to share?
 - **Request coverage** - Missing topics or command categories we should address?
 
+## 📋 **Practical Validation**
+
+For systematic command quality validation, use our focused checklist system:
+
+**[📝 Complete Checklist Collection](../../checklists/README.md)** - 3 essential checklists for professional command development:
+- **[Pre-Development](../../checklists/development/01-pre-development.md)** - Planning and team alignment
+- **[Development](../../checklists/development/02-development.md)** - **The Daily Genius** - Comprehensive daily validation
+- **[Post-Development](../../checklists/development/03-post-development.md)** - Testing and deployment validation
+
+---
+
 ## 📞 Getting Help
 
-1. **Check [Best Practices Guide](05-best-practices.md)** for troubleshooting and common issues
-2. **Browse [command examples](../../commands/)** for inspiration and patterns
-3. **Review the specific guide** for your topic area
-4. **Consult [main project](../../README.md)** for additional resources
+1. **Use [Development Checklist](../../checklists/development/02-development.md)** for daily command validation
+2. **Check [Troubleshooting Guide](08-troubleshooting.md)** for debugging and common issues
+3. **Review [Quality Assurance Guide](07-quality-assurance.md)** for testing and validation
+4. **Browse [command examples](../../commands/)** for inspiration and patterns
+5. **Review the specific guide** for your topic area
+6. **Consult [main project](../../README.md)** for additional resources
 
 ---
 

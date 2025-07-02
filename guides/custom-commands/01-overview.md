@@ -650,17 +650,17 @@ After mastering this overview, continue with these specialized guides:
    - YAML frontmatter options
    - Advanced parameter handling
 
-3. **✨ [Best Practices](04-best-practices.md)**
+3. **✨ [Best Practices](05-best-practices.md)**
    - Anthropic's official recommendations
    - Community best practices
    - Command design principles
 
-4. **🔧 [Advanced Patterns](05-advanced.md)**
+4. **🔧 [Advanced Workflows](04-advanced-workflows.md)**
    - Meta-commands and automation
    - Workflow orchestration
    - Complex parameter handling
 
-5. **👥 [Team Collaboration](06-team.md)**
+5. **👥 [Team Collaboration](09-team-collaboration.md)**
    - Sharing commands effectively
    - Establishing team standards
    - Git integration strategies
@@ -668,22 +668,24 @@ After mastering this overview, continue with these specialized guides:
 ### Practical Next Steps
 
 #### Immediate Actions (Next 15 minutes)
-- [ ] Create your first personal command in `~/.claude/commands/`
-- [ ] Test it with a simple code example
-- [ ] Create a project command in `.claude/commands/`
-- [ ] Share with a teammate for feedback
+1. Create your first personal command in `~/.claude/commands/`
+2. Test it with a simple code example
+3. Create a project command in `.claude/commands/`
+4. Share with a teammate for feedback
 
 #### Short Term (This Week)
-- [ ] Identify 3-5 repetitive tasks you do daily
-- [ ] Convert them to custom commands
-- [ ] Organize commands with subdirectories
-- [ ] Document your team's command standards
+1. Identify 3-5 repetitive tasks you do daily
+2. Convert them to custom commands
+3. Organize commands with subdirectories
+4. Document your team's command standards
 
 #### Long Term (This Month)
-- [ ] Build a comprehensive command library
-- [ ] Contribute to community command repositories  
-- [ ] Train your team on effective command usage
-- [ ] Explore advanced command patterns
+1. Build a comprehensive command library
+2. Contribute to community command repositories  
+3. Train your team on effective command usage
+4. Explore advanced command patterns
+
+**For systematic development:** Use the **[Development Checklist](../../checklists/development/02-development.md)** to validate command quality as you build your library.
 
 ### Additional Resources
 

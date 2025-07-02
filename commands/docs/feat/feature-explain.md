@@ -315,4 +315,52 @@ Save the generated documentation and present completion summary:
 
 📂 **Documentation available at:** `.claude/artifacts/features/`"
 
+## Task 6: Prompt User for Content Verification ⚡
+
+Present content verification option with clear cost/benefit analysis:
+
+"🔍 **Content Verification Available**
+
+**Benefits:**
+• Validates all technical claims against actual codebase
+• Prevents hallucination in generated documentation  
+• Provides confidence scoring and quality assessment
+• Flags unverifiable content for manual review
+
+**Resource Requirements:**
+• **Time:** Additional processing time for verification analysis
+• **Tokens:** Extra token usage for codebase analysis and reporting
+• **Tools:** Requires Read, Grep, and Bash access for codebase analysis
+
+**Verification Scope:**
+• Code examples and API contracts
+• File paths and architecture claims
+• Technology stack assertions
+• Configuration examples
+
+**Enable content verification for this documentation? (y/n) [default: n]:**"
+
+**Handle User Response:**
+- **If 'y':** Proceed to Execute Content Verification Framework task
+- **If 'n':** Skip verification and continue with standard workflow
+- **If no response:** Default to 'n' (skip verification)
+
+**Cost-Benefit Guidance:**
+- **Recommend 'y' for:** Technical documentation, API guides, architecture descriptions
+- **Recommend 'n' for:** Simple updates, conceptual content, time-sensitive work
+
+## Task 7: Execute Content Verification Framework 🔍
+
+[Only execute if user selected 'y' in Task 6]
+
+Execute the complete embedded verification framework from `.claude/embedded/verify-technical-content.md`:
+
+**Framework Execution:**
+- Framework handles its own initialization and execution planning
+- Applies all 6 tasks systematically (initialization + 5 verification phases)
+- Generates comprehensive verification report with confidence assessment
+- All execution logic contained within embedded framework for consistency
+
+**Self-Contained Execution:** The embedded framework is fully self-executing and requires no additional coordination from the calling command.
+
 Confirm the feature analysis and documentation workflow completed successfully.

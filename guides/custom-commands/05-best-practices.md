@@ -7,17 +7,36 @@
 ## Table of Contents
 
 1. [Command Design Fundamentals](#command-design-fundamentals)
+   - [Single Responsibility Principle](#single-responsibility-principle)
+   - [Clear Naming Conventions](#clear-naming-conventions)
+   - [Effective $ARGUMENTS Usage](#effective-arguments-usage)
+   - [YAML Frontmatter Best Practices](#yaml-frontmatter-best-practices)
+
 2. [Prompt Engineering Excellence](#prompt-engineering-excellence)
+   - [High-Level + Low-Level Pattern](#high-level--low-level-pattern)
+   - [Context Priming Techniques](#context-priming-techniques)
+   - [Dynamic Variable Mastery](#dynamic-variable-mastery)
+
 3. [Performance Optimization](#performance-optimization)
+   - [Efficient File Operations](#efficient-file-operations)
+   - [Context Budget Management](#context-budget-management)
+
 4. [Advanced Workflow Best Practices](#advanced-workflow-best-practices)
-5. [Team Collaboration & Organization](#team-collaboration--organization)
-6. [Security & Maintenance](#security--maintenance)
-7. [Troubleshooting Common Issues](#troubleshooting-common-issues)
-8. [Quality Assurance & Testing](#quality-assurance--testing)
+   - [Design Principles for Complex Workflows](#design-principles-for-complex-workflows)
+   - [Sequential Task Dependencies](#sequential-task-dependencies)
+   - [Thinking Mode Integration](#thinking-mode-integration)
+
+
 
 ---
 
 ## Command Design Fundamentals
+
+**Best Practices:**
+1. Single Responsibility Principle - one clear, focused purpose per command
+2. Clear Naming Conventions - kebab-case, action verbs, include scope
+3. Effective $ARGUMENTS Usage - make commands flexible and reusable
+4. YAML Frontmatter Best Practices - use only officially supported options
 
 ### Single Responsibility Principle
 
@@ -108,6 +127,11 @@ allowed-tools: ["Bash", "Read", "Write", "Grep", "Glob"]  # Full automation
 
 ## Prompt Engineering Excellence
 
+**Best Practices:**
+1. High-Level + Low-Level Pattern - strategic objectives + tactical instructions
+2. Context Priming Techniques - focus on tokens that matter
+3. Dynamic Variable Mastery - understand simple string replacement
+
 ### High-Level + Low-Level Pattern
 
 Structure commands with strategic objectives followed by tactical instructions:
@@ -188,11 +212,15 @@ Review the $ARGUMENTS for $ARGUMENTS issues and provide $ARGUMENTS recommendatio
 
 ## Performance Optimization
 
+**Best Practices:**
+1. Efficient File Operations - targeted search strategies
+2. Context Budget Management - progressive context building
+
 ### Efficient File Operations
 
 #### Targeted Search Strategies
 ```markdown
-# ✅ Efficient: Specific Patterns
+# Efficient: Specific Patterns
 ## Task 1: Targeted Discovery
 Use Grep with specific patterns to find relevant files:
 - Search for "authentication" in .js, .ts files
@@ -201,37 +229,23 @@ Use Grep with specific patterns to find relevant files:
 
 ## Task 2: Selective Reading
 Read only the files identified in Task 1 that are directly relevant.
-
-# ❌ Inefficient: Broad Operations
-## Task 1: Read everything
-Read all files in the project to understand the codebase.
 ```
 
 #### Smart Context Management
 ```markdown
-# ✅ Incremental Context Building
+# Incremental Context Building
 Build context progressively, adding only information needed for next steps:
 
 1. **Architecture Overview** → 2. **Feature Location** → 3. **Implementation Details**
-
-# ❌ Context Overload
-Load all possible context upfront regardless of relevance.
 ```
 
-### Tool Selection Strategies
-
-| Tool | Best For | Avoid For |
-|------|----------|-----------|
-| **Grep** | Finding specific patterns across multiple files | Reading file contents |
-| **Read** | Getting file contents with line numbers | Searching across files |
-| **Glob** | Finding files by name patterns | Content-based searches |
-| **Write** | Creating new files or documentation | Modifying existing code |
-| **Edit** | Precise modifications to existing files | Creating new files |
 
 ### Context Budget Management
 
+Focus on strategic context loading for optimal performance:
+
 ```markdown
-# ✅ Context-Aware Commands
+# Context-Aware Commands
 Think about this analysis: $ARGUMENTS
 
 **Context Strategy:**
@@ -239,54 +253,45 @@ Think about this analysis: $ARGUMENTS
 2. Read only essential files for initial understanding  
 3. Expand context only if initial analysis reveals gaps
 4. Summarize findings before requesting more context
-
-# ❌ Context Wasteful
-Read every file, analyze everything, then figure out what's relevant.
 ```
 
 ---
 
 ## Advanced Workflow Best Practices
 
+**Best Practices:**
+1. Design Principles for Complex Workflows - clear objectives, planning first
+2. Sequential Task Dependencies - each task builds upon previous results
+3. Thinking Mode Integration - strategic use of reasoning capabilities
+
 ### Design Principles for Complex Workflows
 
 #### 1. **Start with Clear Objectives**
 ```markdown
-# ✅ Good: Clear Objective
+# Clear Objective Example
 Analyze the user authentication system to understand:
 - How users log in and maintain sessions
 - Security measures implemented
 - Integration with external identity providers
-
-# ❌ Unclear: Vague Objective  
-Analyze the authentication stuff and see what's there
 ```
 
 #### 2. **Plan Before Executing**
 ```markdown
-# ✅ Good: Planning First
+# Planning First Approach
 Think harder about the best approach for analyzing this complex feature:
 - What are the key areas to investigate?
 - In what order should I examine components?
 - What documentation would be most valuable?
 
 [Then execute planned tasks]
-
-# ❌ Poor: Immediate Execution
-Search for files related to $ARGUMENTS and create documentation
 ```
 
 #### 3. **Build Context Progressively**
 ```markdown
-# ✅ Good: Progressive Context
+# Progressive Context Building
 ## Task 1: Understand overall system architecture
 ## Task 2: Identify how this feature fits into the architecture  
 ## Task 3: Deep dive into feature-specific implementation
-
-# ❌ Poor: Scattered Analysis
-## Task 1: Look at some files
-## Task 2: Check tests
-## Task 3: Write documentation
 ```
 
 ### Sequential Task Dependencies
@@ -294,7 +299,7 @@ Search for files related to $ARGUMENTS and create documentation
 Structure tasks so each builds upon previous results:
 
 ```markdown
-# ✅ Clear Dependencies
+# Clear Dependencies Example
 ## Task 1: Discovery (creates foundation)
 Identify all components related to $ARGUMENTS feature
 
@@ -303,11 +308,6 @@ Examine the components found in Task 1 for patterns and architecture
 
 ## Task 3: Documentation (synthesizes Tasks 1-2)
 Generate comprehensive documentation based on discovery and analysis
-
-# ❌ Poor Dependencies
-## Task 1: Create documentation
-## Task 2: Find relevant files  
-## Task 3: Analyze findings
 ```
 
 ### Thinking Mode Integration
@@ -341,426 +341,7 @@ Consider:
 Based on your analysis, create a detailed investigation plan.
 ```
 
-### Human-in-the-Loop Best Practices
 
-#### Strategic Confirmation Points
-Use confirmation points before expensive operations:
-
-```markdown
-## Validation Checkpoint
-
-**What I Found:**
-- Main implementation in [specific locations]
-- Architecture pattern: [pattern identified]
-- Complexity level: [assessment]
-- Test coverage: [coverage status]
-
-**Next Steps Options:**
-- **Option A:** Comprehensive documentation (15-20 minutes)
-- **Option B:** Quick overview (5 minutes)
-- **Option C:** Focus on specific area you specify
-
-**Which option would you prefer?**
-```
-
-#### Clear Confirmation Patterns
-```markdown
-# ✅ Clear Confirmation Request
-**I found [specific findings]. Should I proceed with [specific next step]?**
-Please respond with "yes" to continue or provide alternative instructions.
-
-# ❌ Unclear Request
-Let me know what you think about this.
-```
-
----
-
-## Team Collaboration & Organization
-
-### Project vs User-Level Commands
-
-#### **Project Commands** (`.claude/commands/`)
-- **Shared with team** through version control
-- **Project-specific** workflows and standards
-- **Consistent** across all team members
-
-```bash
-# Project structure
-.claude/
-└── commands/
-    ├── docs/
-    │   ├── generate-api-docs.md
-    │   └── update-changelog.md
-    ├── review/  
-    │   ├── security-audit.md
-    │   └── performance-check.md
-    └── deploy/
-        ├── pre-deploy-check.md
-        └── deployment-summary.md
-```
-
-#### **User Commands** (`~/.claude/commands/`)
-- **Personal** productivity workflows
-- **Individual preferences** and shortcuts
-- **Not shared** with team
-
-```bash
-# User structure  
-~/.claude/
-└── commands/
-    ├── personal/
-    │   ├── daily-standup.md
-    │   └── time-tracker.md
-    └── utilities/
-        ├── commit-helper.md
-        └── branch-cleaner.md
-```
-
-### Directory Organization Patterns
-
-#### By Function
-```
-.claude/commands/
-├── analyze/          # Analysis commands
-├── generate/         # Generation commands  
-├── review/           # Review commands
-└── deploy/           # Deployment commands
-```
-
-#### By Team Role
-```
-.claude/commands/
-├── backend/          # Backend team commands
-├── frontend/         # Frontend team commands
-├── devops/           # DevOps team commands
-└── shared/           # Cross-team commands
-```
-
-#### By Project Phase
-```
-.claude/commands/
-├── development/      # Active development
-├── testing/          # QA and testing
-├── deployment/       # Release management
-└── maintenance/      # Post-deployment
-```
-
-### Version Control Best Practices
-
-#### Commit Command Collections
-```bash
-# Add new command to project
-git add .claude/commands/analyze-performance.md
-git commit -m "Add performance analysis command for API endpoints"
-
-# Update existing command
-git commit -m "Update security-audit command with OWASP guidelines"
-
-# Document command usage
-git commit -m "Add README for custom commands with usage examples"
-```
-
-#### Command Documentation
-```markdown
-# .claude/commands/README.md
-# Project Custom Commands
-
-## Analysis Commands
-- `/project:analyze-performance` - Analyze API performance bottlenecks
-- `/project:analyze-security` - Security vulnerability assessment
-
-## Documentation Commands  
-- `/project:generate-api-docs` - Generate API documentation
-- `/project:update-changelog` - Update project changelog
-
-## Usage Examples
-```bash
-# Analyze specific feature performance
-/project:analyze-performance "user authentication"
-
-# Generate docs for new API endpoint
-/project:generate-api-docs "payment processing API"
-```
-
-### Onboarding New Team Members
-
-#### Command Discovery Workflow
-```markdown
-# onboard-commands.md
----
-description: "Help new team members discover and understand project commands"  
-allowed-tools: ["Read", "Write"]
----
-
-# Team Command Onboarding
-
-Welcome to our custom command system! Here's how to get started:
-
-## Step 1: Available Commands
-List all available project commands and their purposes:
-[Command discovery logic]
-
-## Step 2: Usage Examples
-Show practical examples of common workflows:
-[Example generation logic]
-
-## Step 3: Best Practices
-Share team conventions and standards:
-[Best practices documentation]
-```
-
----
-
-## Security & Maintenance
-
-### Tool Restrictions Strategy
-
-#### Principle of Least Privilege
-```yaml
-# ✅ Read-Only Analysis
----
-description: "Security analysis - read-only examination"
-allowed-tools: ["Read", "Grep", "Glob"]
----
-
-# ✅ Documentation Generation  
----
-description: "Generate documentation - controlled file operations"
-allowed-tools: ["Read", "Write", "Grep"]
----
-
-# ⚠️ Full Access (use sparingly)
----
-description: "Complete workflow automation - requires justification"
-allowed-tools: ["Bash", "Read", "Write", "Edit", "Grep", "Glob"]
----
-```
-
-#### Security-First Command Design
-```markdown
-# ✅ Secure Pattern
-## Task 1: Read Configuration
-Read configuration files to understand security settings (never log secrets)
-
-## Task 2: Analyze Patterns
-Identify security patterns without exposing sensitive data
-
-## Task 3: Generate Report
-Create security report with sanitized findings
-
-# ❌ Insecure Pattern
-## Task 1: Debug Everything
-Log all configuration including API keys and secrets
-```
-
-### Sensitive Data Protection
-
-#### Data Sanitization Patterns
-```markdown
-# Built-in Security Practices
-When analyzing code that may contain sensitive data:
-
-1. **Never log or display:**
-   - API keys, tokens, passwords
-   - Database connection strings
-   - Internal URLs and endpoints
-   
-2. **Use generic references:**
-   - "API key detected" instead of showing the key
-   - "Database connection configured" instead of showing credentials
-   
-3. **Focus on patterns:**
-   - "Hardcoded secrets found in 3 locations"
-   - "Insecure configuration detected"
-```
-
-### Command Lifecycle Management
-
-#### Version Evolution Strategy
-```markdown
-# Command Versioning Pattern
-analyze-api-v1.md       # Initial version
-analyze-api-v2.md       # Enhanced with security checks  
-analyze-api-v3.md       # Added performance metrics
-analyze-api.md          # Current stable version (symlink or copy of v3)
-```
-
-#### Deprecation Workflow
-```markdown
-# deprecate-command.md
----
-description: "Gracefully deprecate old commands and guide users to alternatives"
----
-
-# Command Deprecation Notice
-
-⚠️ **This command is deprecated and will be removed in the next release.**
-
-**Replacement:** Use `/project:new-command-name` instead
-
-**Migration Guide:**
-- Old: `/project:old-command arg1`
-- New: `/project:new-command arg1`
-
-**What changed:**
-[Explanation of improvements and changes]
-```
-
----
-
-## Troubleshooting Common Issues
-
-### Issue 1: Workflow Stalls at Confirmation Points
-**Symptoms:** Command stops and waits indefinitely  
-**Cause:** Unclear confirmation request or missing user prompt  
-**Solution:**
-```markdown
-# ✅ Clear Confirmation Request
-**I found [specific findings]. Should I proceed with [specific next step]?**
-Please respond with "yes" to continue or provide alternative instructions.
-
-# ❌ Unclear Request
-Let me know what you think about this.
-```
-
-### Issue 2: Tasks Execute Out of Order
-**Symptoms:** Later tasks reference information not yet gathered  
-**Cause:** Poor task dependency design  
-**Solution:**
-```markdown
-# ✅ Clear Dependencies
-## Task 1: Discovery (creates foundation)
-## Task 2: Analysis (uses Task 1 results)
-## Task 3: Documentation (synthesizes Tasks 1-2)
-
-# ❌ Poor Dependencies
-## Task 1: Create documentation
-## Task 2: Find relevant files
-## Task 3: Analyze findings
-```
-
-### Issue 3: Context Loss Between Tasks
-**Symptoms:** Later tasks don't reference earlier findings  
-**Cause:** No state management between tasks  
-**Solution:**
-```markdown
-# ✅ State Management
-## Task 1: Create tracking file with findings
-## Task 2: Update tracking file with additional discoveries
-## Task 3: Use complete tracking file for final synthesis
-
-# ❌ No State Management
-Each task operates independently without building on previous work
-```
-
-### Issue 4: Overwhelmingly Complex Output
-**Symptoms:** Generated documentation is too detailed or unfocused  
-**Cause:** No scope management or user preference consideration  
-**Solution:**
-```markdown
-# ✅ Scope Management
-Before generating documentation, confirm:
-- Level of detail needed (overview vs comprehensive)
-- Target audience (developers vs stakeholders)  
-- Specific focus areas of interest
-
-# ❌ No Scope Control
-Generate maximum detail documentation regardless of needs
-```
-
-### Debugging Complex Workflows
-
-#### Debug Mode Pattern
-```markdown
-# debug-workflow.md
----
-description: "Debug complex workflows step by step"
-allowed-tools: ["Read"]
----
-
-# Workflow Debug Mode
-
-Think about this workflow: $ARGUMENTS
-
-**Planned Tasks:**
-1. [Task 1 description and expected outputs]
-2. [Task 2 description and dependencies on Task 1]  
-3. [Task 3 description and synthesis approach]
-
-**Dependencies Check:**
-- Task 2 depends on: [Task 1 outputs]
-- Task 3 depends on: [Task 1 + Task 2 outputs]
-
-**Would you like me to execute this plan step by step?**
-```
-
-#### Incremental Development Strategy
-```markdown
-# Start Simple, Add Complexity
-1. **Version 1:** Basic discovery and summary
-2. **Version 2:** Add configuration analysis  
-3. **Version 3:** Add test coverage analysis
-4. **Version 4:** Add comprehensive documentation generation
-```
-
----
-
-## Quality Assurance & Testing
-
-### Command Validation Checklist
-
-#### Before Committing New Commands
-- [ ] **Single Responsibility:** Command has one clear purpose
-- [ ] **Clear Naming:** Follows team naming conventions
-- [ ] **Appropriate Tools:** Uses minimal necessary tool permissions
-- [ ] **Error Handling:** Includes graceful failure scenarios
-- [ ] **Documentation:** Has clear description and usage examples
-- [ ] **Security:** No sensitive data exposure risks
-
-#### Testing Command Effectiveness
-```markdown
-# test-command.md
----
-description: "Test custom commands with various scenarios"
-allowed-tools: ["Read"]
----
-
-# Command Testing Framework
-
-Test the $ARGUMENTS command with these scenarios:
-
-## Test 1: Happy Path
-- Standard input and expected behavior
-- Verify all tasks complete successfully
-
-## Test 2: Edge Cases  
-- Empty or minimal input
-- Large/complex input scenarios
-
-## Test 3: Error Conditions
-- Invalid input handling
-- Missing dependencies or files
-- Network/permission failures
-
-## Test 4: Performance
-- Response time with typical input
-- Context usage efficiency
-- Token consumption analysis
-```
-
-### Quality Metrics
-
-#### Command Effectiveness Indicators
-- **Time to Value:** How quickly does the command provide useful results?
-- **Accuracy:** How often does the command produce correct outputs?
-- **Consistency:** Does the command behave predictably with similar inputs?
-- **Maintainability:** How easy is it to update and improve the command?
-
-#### User Experience Metrics
-- **Clarity:** Are the command's prompts and outputs easy to understand?
-- **Reliability:** Does the command work consistently across different scenarios?
-- **Efficiency:** Does the command minimize unnecessary steps and context usage?
-- **Helpfulness:** Does the command provide actionable, valuable results?
 
 ---
 
@@ -776,20 +357,30 @@ Mastering custom command best practices enables you to create **professional-gra
 ### Performance Optimization
 1. **Efficient Operations:** Target searches, selective reading
 2. **Context Management:** Load only what's needed when it's needed
-3. **Tool Selection:** Right tool for the right job
+3. **Strategic Tool Usage:** Choose appropriate tools for command creation
 
 ### Professional Development
-1. **Team Collaboration:** Shared standards and consistent patterns
-2. **Security First:** Principle of least privilege, data protection
-3. **Quality Assurance:** Testing, validation, continuous improvement
+1. **Quality Assurance:** Systematic testing and validation processes
+2. **Security Considerations:** Safe command design and data protection
+3. **Team Integration:** Collaboration patterns and shared standards
 
 ### Advanced Workflows
 1. **Thinking Mode Integration:** Strategic use of reasoning capabilities
-2. **Human-in-the-Loop:** Confirmation points before expensive operations
+2. **Workflow Design:** Clear objectives and logical task dependencies
 3. **State Management:** Maintain context across sequential tasks
 
 **Remember:** Custom commands are **compute-scaling assets**. Invest time in designing them well, and they'll multiply your impact exponentially.
 
+**For practical validation:**
+- **[Development Checklist](../../checklists/development/02-development.md)** - **The Daily Genius** - Essential validation for every command
+- **[Complete Checklist Collection](../../checklists/README.md)** - 3 focused checklists for systematic command development
+
+**For specialized guidance:**
+- **[Security](06-security.md)** - Security-first command design and data protection
+- **[Quality Assurance](07-quality-assurance.md)** - Testing frameworks and quality metrics
+- **[Troubleshooting](08-troubleshooting.md)** - Debug issues and resolve workflow problems
+- **[Team Collaboration](09-team-collaboration.md)** - Organizational setup and team adoption
+
 ---
 
-*Next recommended reading: [Command Examples & Templates](06-examples.md) - Explore practical implementations of these best practices*
+*Next recommended reading: [Security](06-security.md) - Implement security-first command design and data protection*

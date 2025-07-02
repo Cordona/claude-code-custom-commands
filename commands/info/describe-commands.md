@@ -51,7 +51,7 @@ All commands follow the syntax: `/user:command-name [arguments]`
 | `custom-command-drop` | ⚡ Exec | Exit active command modes | ⚡ | Low |
 | `deep-think-init` | ⚡ Exec | Activate deep thinking mode | ✅ | Medium |
 | `deep-think-drop` | ⚡ Exec | Deactivate deep thinking mode | ✅ | Low |
-| `git-commit` | 🔧 Git | Compose commit messages | ✅ | Medium |
+| `git-commit` | 🔧 Git | Enterprise commit message composer | ✅ | High |
 | `git-config` | 🔧 Git | Configure Git settings | ✅ | Medium |
 
 **Legend:** ✅ Interactive | ⚡ Automated
@@ -554,54 +554,58 @@ Gracefully deactivates the intelligent deep thinking mode while preserving learn
 ## `/user:git-commit` - Intelligent Commit Message Composer
 
 **Category:** 🔧 Git > Workflow Integration  
-**Purpose:** Intelligent conventional commit message composer with git analysis  
+**Purpose:** Enterprise-grade conventional commit message composer with comprehensive git analysis and error handling  
 **Allowed Tools:** Bash, Read
 
 ### Description
-An intelligent system that analyzes current git changes to compose optimal conventional commit messages. Examines staged changes, extracts context from branch names, and generates high-quality commit messages following conventional commit standards.
+An enterprise-grade system that analyzes current git changes to compose optimal conventional commit messages with comprehensive validation and dual workflow support. Features state management, error recovery, intelligent analysis, and quality assurance for professional development teams.
 
 ### Key Features
-- **📊 Git Analysis** - Analyzes staged changes, file modifications, and repository state
-- **🎯 Conventional Commits** - Generates properly formatted conventional commit messages
-- **🔍 Context Extraction** - Extracts ticket numbers and context from branch names
-- **📝 Quality Validation** - Ensures commit messages meet quality standards
-- **🧠 Smart Categorization** - Automatically determines commit type (feat, fix, docs, etc.)
-- **⚡ Interactive Refinement** - Allows message refinement before committing
+- **🔍 Environment Validation** - Comprehensive git repository and change validation with error handling
+- **📊 Repository Analysis** - Deep analysis of git status, staged changes, file categories, and complexity assessment
+- **🎯 Intelligent Commit Types** - Smart pattern recognition for commit type suggestions with reasoning
+- **📝 Scope Determination** - Intelligent directory pattern recognition for optimal scope suggestions
+- **🎫 Ticket Reference Extraction** - Automatic extraction from branch names (JIRA, GitHub, GitLab patterns)
+- **📄 Body Assessment** - Intelligent evaluation of when commit body is needed based on complexity
+- **👀 Quality Validation** - Comprehensive format compliance, length limits, and consistency checks
+- **⚡ Dual Workflow Support** - IDE workflow (clipboard) and CLI workflow (direct commit) options
 
 ### When to Use
-- Before making commits to ensure high-quality commit messages
-- When working with teams requiring conventional commit standards
-- For maintaining clean, searchable git history
-- When commit messages need to integrate with ticketing systems
-- To improve code review and change tracking efficiency
+- Before making commits to ensure enterprise-grade commit message quality
+- When working with teams requiring strict conventional commit standards
+- For maintaining professional, searchable git history with ticket integration
+- When commit messages need comprehensive validation and error handling
+- To support both IDE and command-line development workflows efficiently
 
 ### Usage Examples
 ```bash
-# Analyze changes and generate commit message
+# Full workflow with environment validation and intelligent analysis
 /user:git-commit
 
-# Generate commit with specific type
-/user:git-commit --type=feat
+# Copy to clipboard for IDE workflow
+/user:git-commit (choose clipboard option)
 
-# Interactive commit message composition
-/user:git-commit --interactive
+# Direct commit with comprehensive validation
+/user:git-commit (choose git commit option)
 ```
 
 ### How It Works
-1. **Repository Analysis** - Examines git status, staged changes, and diff statistics
-2. **Context Extraction** - Analyzes branch name for ticket numbers and context
-3. **Change Categorization** - Determines appropriate commit type and scope
-4. **Message Composition** - Generates conventional commit message
-5. **Quality Validation** - Checks message against best practices
-6. **Interactive Refinement** - Allows user review and modification before commit
+1. **Environment Validation** - Validates git repository status and ensures changes exist with error handling
+2. **Repository Analysis** - Comprehensive analysis of file categories, complexity, directories, and branch context
+3. **Type Suggestion** - Intelligent pattern recognition suggests optimal commit type with detailed reasoning
+4. **Scope Determination** - Smart directory analysis suggests most appropriate scope for changes
+5. **Ticket Extraction** - Analyzes branch name patterns for automatic ticket reference detection
+6. **Body Assessment** - Evaluates change complexity to recommend when commit body is beneficial
+7. **Message Assembly** - Constructs complete conventional commit message with quality validation
+8. **Dual Execution** - Offers clipboard copy for IDE workflow or direct git commit with staging checks
 
 ### Expected Output
-- Properly formatted conventional commit message
-- Analysis of changes and their scope
-- Extracted context from branch names and tickets
-- Quality validation results
-- Option to refine message before committing
-- Integration with git commit workflow
+- Enterprise-grade conventional commit message with comprehensive validation
+- Detailed analysis of repository state, change complexity, and affected areas
+- Intelligent commit type and scope suggestions with reasoning
+- Automatic ticket reference extraction from branch patterns
+- Quality validation with format compliance and best practice adherence
+- Dual workflow support for both IDE and CLI development environments
 
 ---
 
@@ -612,15 +616,15 @@ An intelligent system that analyzes current git changes to compose optimal conve
 **Allowed Tools:** Bash
 
 ### Description
-An interactive system for comprehensive Git configuration including user identity setup, GPG signing configuration, and repository-specific settings. Provides guided setup for optimal Git workflow configuration.
+Strategic Git configuration system that analyzes environment and establishes comprehensive identity, signing, and workflow settings. Features intelligent recommendations, scope management, and professional development standards.
 
 ### Key Features
+- **🔍 Environment Analysis** - Strategic assessment of current state with intelligent recommendations
 - **👤 Identity Configuration** - Sets up user.name and user.email with validation
 - **🔐 GPG Signing Setup** - Configures commit signing with GPG keys
-- **🎯 Repository Context** - Handles both global and repository-specific configuration
-- **🔍 Current State Analysis** - Analyzes existing configuration before changes
-- **⚙️ Team Requirements** - Considers team and organizational Git standards
-- **✅ Configuration Validation** - Verifies settings are applied correctly
+- **🎯 Scope Management** - Intelligent global vs local configuration decisions
+- **⚙️ Workflow Enhancements** - Optional productivity features (aliases, hooks, editor settings)
+- **✅ Configuration Validation** - Verifies settings are applied correctly with comprehensive testing
 
 ### When to Use
 - When setting up Git for the first time on a new system
@@ -631,31 +635,30 @@ An interactive system for comprehensive Git configuration including user identit
 
 ### Usage Examples
 ```bash
-# Interactive Git configuration setup
+# Strategic configuration with environment analysis
 /user:git-config
 
-# Setup with GPG signing
-/user:git-config --enable-gpg
+# Complete setup with identity, GPG, and workflow enhancements
+/user:git-config (follow interactive prompts for comprehensive setup)
 
-# Repository-specific configuration
-/user:git-config --local
+# Professional Git configuration for team environments
+/user:git-config (includes intelligent scope management and team standards)
 ```
 
 ### How It Works
-1. **Current Analysis** - Examines existing Git configuration (global and local)
-2. **Identity Setup** - Configures user.name and user.email with validation
-3. **GPG Configuration** - Sets up commit signing with available GPG keys
-4. **Context Selection** - Chooses between global and repository-specific settings
-5. **Team Integration** - Applies team or organizational standards
-6. **Validation** - Confirms all configuration changes are applied correctly
+1. **Environment Analysis** - Strategic assessment of current configuration state and repository context
+2. **Identity Configuration** - Professional identity setup with validation and commit preview
+3. **GPG Signing Setup** - Intelligent key discovery and signing configuration with fallback options
+4. **Workflow Enhancements** - Optional productivity features (aliases, hooks, editor settings)
+5. **Configuration Application & Validation** - Comprehensive setup with testing and success confirmation
 
 ### Expected Output
-- Configured Git user identity (name and email)
-- GPG signing setup (if requested)
-- Repository-specific or global configuration as appropriate
-- Validation confirmation of all settings
-- Summary of configuration changes made
-- Guidance for team-specific Git workflow integration
+- Strategic environment analysis with intelligent recommendations
+- Professional Git identity configuration with scope management
+- GPG signing setup with key discovery and validation testing
+- Optional workflow enhancements (aliases, hooks, editor configuration)
+- Comprehensive validation confirmation with success testing
+- Complete configuration summary ready for professional development workflow
 
 ---
 
@@ -668,7 +671,7 @@ An interactive system for comprehensive Git configuration including user identit
 
 ### **Advanced Usage**
 - **[Advanced Workflows](../../guides/custom-commands/04-advanced-workflows.md)** - Multi-step automation and thinking mode integration
-- **[Learning Resources](../../guides/custom-commands/06-resources.md)** - Videos, documentation, and external learning content
+- **[Learning Resources](../../guides/custom-commands/10-learning-resources.md)** - Videos, documentation, and external learning content
 
 ### **Project Resources**
 - **[Main Project README](../../README.md)** - Project overview and community information

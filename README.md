@@ -42,15 +42,40 @@ This repository embodies these principles by providing you with **reusable promp
 ### **⚡ Production-Ready Commands**
 Battle-tested custom commands actively used in daily development workflows:
 
-**📋 [Complete Command Reference](commands/info/describe-commands.md)** - Detailed documentation for all available commands.
+**📋 [Complete Command Reference](commands/info/describe-commands.md)** - Detailed documentation for all user-facing commands.
+
+**🔧 [Embedded Commands Reference](commands/info/describe-embedded-commands.md)** - Framework components for command development.
+
+**📚 [Embedded Commands Guides](guides/embedded/)** - Architecture and implementation guides for embedded command development.
 
 *These aren't just examples - they're production tools built for real work, refined through community feedback, and designed for immediate adoption.*
+
+### **🔍 Content Verification System**
+Anti-hallucination framework for validating generated technical documentation:
+
+**Key Features:**
+- **Automated verification** against actual codebase reality
+- **Confidence scoring** with risk assessment and quality metrics
+- **Human-in-the-loop confirmation** for content modifications
+- **Professional reporting** with comprehensive audit trails
+
+**Available Commands:**
+- **feature-verify.md** - Standalone verification for existing documentation
+- **Embedded verification** - Optional verification in generation commands (feature-explain.md, etc.)
+- **verify-technical-content.md** - Self-contained verification framework for command developers
 
 ### **📚 Comprehensive Knowledge Hub**
 Complete guide series and learning resources for mastering custom commands:
 - **Foundation knowledge** - Understanding, setup, and syntax mastery
 - **Advanced patterns** - Multi-step workflows and professional techniques  
 - **Community wisdom** - Best practices and real-world insights
+
+### **📋 Professional Validation Checklists**
+Focused, actionable checklists for ensuring command quality throughout the development lifecycle:
+
+**📝 [Complete Checklist Collection](checklists/README.md)** - Systematic validation for professional command development.
+
+*Modular checklists covering development lifecycle, domain expertise, and quick reference validation - designed for daily use by individuals and teams.*
 
 ## 🚀 Quick Start
 
@@ -60,38 +85,15 @@ Complete guide series and learning resources for mastering custom commands:
 3. **[⚡ Install Commands](commands/)** - Add production-ready commands to your workflow
 
 ### **Ready to Go Deeper?**
-- **[📚 Complete Guide Series](guides/custom-commands/README.md)** - Full learning path with 6 comprehensive guides
+- **[📚 Complete Guide Series](guides/custom-commands/README.md)** - Full learning path with 10 comprehensive guides
 - **[📖 Syntax Reference](guides/custom-commands/03-syntax.md)** - Complete syntax guide with multi-argument handling and YAML frontmatter
 - **[🚀 Advanced Workflows](guides/custom-commands/04-advanced-workflows.md)** - Multi-step automation with thinking mode integration
-- **[✨ Best Practices](guides/custom-commands/05-best-practices.md)** - Professional development, security, and team collaboration
-- **[📚 Learning Resources](guides/custom-commands/06-resources.md)** - Curated videos, documentation, and external learning content
-
-## 📂 Repository Structure
-
-```
-claude-code-custom-commands/
-├── README.md                    # This file - project overview
-├── DISCLAIMER.md                # Content generation transparency and methodology
-├── LICENSE                      # Apache 2.0 open source license
-├── commands/                    # Production-ready commands for daily use
-│   ├── docs/                   # Documentation generation commands
-│   ├── exec/                   # Execution and mode management  
-│   ├── git/                    # Git workflow integration
-│   └── info/                   # Documentation and reference materials
-│       └── describe_commands.md # Complete command reference and documentation
-├── guides/
-│   └── custom-commands/        # Comprehensive custom commands guides (6 guides)
-│       ├── README.md           # Guide series index and learning path
-│       ├── 01-overview.md      # Introduction and core concepts
-│       ├── 02-setup.md         # Platform setup and configuration
-│       ├── 03-syntax.md        # Complete syntax reference
-│       ├── 04-advanced-workflows.md  # Multi-step automation patterns
-│       ├── 05-best-practices.md      # Professional development guide
-│       └── 06-resources.md     # Curated learning resources and videos
-├── tools/scripts/sh/           # Command management utilities
-│   └── manage_commands.sh      # Cross-platform command manager
-└── CLAUDE.md                   # Instructions for Claude Code
-```
+- **[✨ Best Practices](guides/custom-commands/05-best-practices.md)** - Professional command creation and performance optimization
+- **[🔒 Security](guides/custom-commands/06-security.md)** - Security-first command design and data protection
+- **[🎯 Quality Assurance](guides/custom-commands/07-quality-assurance.md)** - Testing frameworks and quality metrics
+- **[🔧 Troubleshooting](guides/custom-commands/08-troubleshooting.md)** - Debug workflow issues and resolve problems
+- **[👥 Team Collaboration](guides/custom-commands/09-team-collaboration.md)** - Organizational setup and team adoption
+- **[📚 Learning Resources](guides/custom-commands/10-learning-resources.md)** - Curated videos, documentation, and external learning content
 
 ## 🛠️ Command Management Script
 
@@ -210,17 +212,21 @@ This repository serves as the **community hub** for custom commands development,
 - **🤝 Community Collaboration**: Shared improvement and collective wisdom
 - **🎯 Strategic Advantage**: Implementation of IndyDevDan's compute scaling principles
 
-## 📖 Complete Guide Series (6 Guides Available)
+## 📖 Complete Guide Series (10 Guides Available)
 
 Our comprehensive guide series covers everything you need to master custom commands:
 
-### **✅ Complete Learning System (Guides 1-6)**
+### **✅ Complete Learning System (Guides 1-10)**
 1. **[Custom Commands Overview](guides/custom-commands/01-overview.md)** - What custom commands are and how they work
 2. **[Setup Guide](guides/custom-commands/02-setup.md)** - Cross-platform installation and team collaboration setup  
 3. **[Syntax Reference](guides/custom-commands/03-syntax.md)** - Complete syntax with multi-argument handling and YAML frontmatter
 4. **[Advanced Workflows](guides/custom-commands/04-advanced-workflows.md)** - Multi-step automation with thinking mode integration
-5. **[Best Practices](guides/custom-commands/05-best-practices.md)** - Professional development, security, team collaboration, and troubleshooting
-6. **[Learning Resources](guides/custom-commands/06-resources.md)** - Curated videos, documentation, and external learning content
+5. **[Best Practices](guides/custom-commands/05-best-practices.md)** - Professional command creation and performance optimization
+6. **[Security](guides/custom-commands/06-security.md)** - Security-first command design and data protection
+7. **[Quality Assurance](guides/custom-commands/07-quality-assurance.md)** - Testing frameworks and quality metrics
+8. **[Troubleshooting](guides/custom-commands/08-troubleshooting.md)** - Debug workflow issues and resolve problems
+9. **[Team Collaboration](guides/custom-commands/09-team-collaboration.md)** - Organizational setup and team adoption
+10. **[Learning Resources](guides/custom-commands/10-learning-resources.md)** - Curated videos, documentation, and external learning content
 
 ### **📋 Future Development**
 - **Real-World Examples** - Production-ready commands for immediate use

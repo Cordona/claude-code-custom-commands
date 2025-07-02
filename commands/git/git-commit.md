@@ -1,5 +1,5 @@
 ---
-description: "Intelligent conventional commit message composer with git analysis"
+description: "Enterprise-grade conventional commit message composer with comprehensive git analysis and error handling"
 allowed-tools: ["Bash", "Read"]
 ---
 
@@ -7,174 +7,123 @@ allowed-tools: ["Bash", "Read"]
 
 Think harder about analyzing the current git changes to compose an optimal conventional commit message.
 
-Execute each task in the order given to create a high-quality conventional commit message.
+**Key Features:** State management, error recovery, intelligent analysis, dual workflow support (IDE + CLI), and quality assurance.
+
+Execute each task in sequence to create a high-quality conventional commit message.
+
+## Task 0: Validate Environment 🔍
+
+Verify proper environment for commit message composition using these git commands:
+- `git rev-parse --is-inside-work-tree` (check git repository)
+- `git diff --name-only | wc -l` (count unstaged changes)
+- `git diff --cached --name-only | wc -l` (count staged changes)
+- `git status --porcelain | wc -l` (total changes)
+
+**Success Criteria:** Inside git repository AND has changes (staged OR unstaged).
+
+**Error Handling:**
+- Not in git repository → "❌ Not in a git repository. Please run this command from within a git project."
+- No changes at all → "❌ No changes found. Please make some changes to your files before creating a commit message."
+
+Initialize tracking state for workflow continuity.
 
 ## Task 1: Analyze Repository State 🔍
 
-Run `git status` and `git diff --stat` to understand the current changes.
+Execute comprehensive repository analysis to understand change context and complexity.
 
-Examine:
-- Modified, added, and deleted files
-- Number of files changed and line modifications
-- Branch name for potential ticket extraction
-- Scope of changes to determine complexity
+**Analysis Objectives:**
+- Determine file categories (source, tests, docs, config) and change complexity
+- Identify affected directories for scope suggestions
+- Detect repository patterns (monorepo vs standard structure)
+- Extract branch information for ticket reference detection
 
-Present a brief summary of what you found.
+**Use appropriate git commands:** `git status --porcelain`, `git diff --cached --stat`, `git branch --show-current`, `git diff --cached --numstat`
+
+**Present Summary:**
+```
+📊 **Repository Analysis:**
+- Files: [count] ([categories])
+- Complexity: [Simple/Moderate/Complex]
+- Areas: [affected directories]
+- Branch: [current-branch]
+```
 
 ## Task 2: Suggest Commit Type 🎯
 
-Based on your analysis of the changes, suggest the most appropriate conventional commit type.
+Analyze changes using intelligent pattern recognition to suggest the most appropriate conventional commit type.
 
-Present the suggestion with reasoning, then ask:
+**Analysis Approach:**
+- File pattern analysis (extensions, paths, content nature)
+- Directory context and change scope
+- Modification type assessment (new, modified, deleted)
 
-**Common types available:**
-1. **feat** ✨ - New feature or functionality  
-2. **fix** 🐛 - Bug fix
-3. **docs** 📚 - Documentation changes
-4. **style** 💄 - Code style/formatting (no logic changes)
-5. **refactor** ♻️ - Code restructuring (no feature/bug changes)
-6. **test** ✅ - Adding or updating tests
-7. **chore** 🔧 - Maintenance tasks, build changes
+**Present intelligent suggestion with reasoning:**
 
-**Ask the user:**
-"Based on my analysis, I suggest: **[your-suggestion]** because [reasoning].
+"Based on my analysis, I suggest: **[type]** because [reasoning].
 
-Your choice:
+**Available types:** feat ✨, fix 🐛, docs 📚, style 💄, refactor ♻️, test ✅, chore 🔧
+
+**Your choice:**
 1. Accept my suggestion
-2. Choose a different type from the list  
-3. Specify a custom type
+2. Choose different type
+3. Specify custom type"
 
 ## Task 3: Determine Scope 📝
 
-Analyze the file paths from the git changes to suggest an appropriate scope.
+Suggest optimal scope using intelligent directory pattern recognition.
 
-Look for patterns like:
-- Directory names (auth, api, ui, docs, etc.)
-- Component areas being modified
-- Logical groupings of the changes
+**Pattern Recognition:**
+- **Monorepo:** packages/*, apps/*, libs/*, services/* → suggest component name
+- **Standard:** src/auth/, components/, docs/ → suggest logical area
+- **Smart Grouping:** Identify most specific scope encompassing all changes
 
-**Ask the user:**
-"Based on the file paths, I suggest scope: **[your-suggestion]**
-
-Your choice:
-1. Accept suggested scope: `([scope])`
-2. Provide different scope
-3. Skip scope (no parentheses)"
+Present scope suggestion with reasoning and offer alternatives (accept/modify/skip).
 
 ## Task 4: Compose Subject Line ✍️
 
-Create a concise summary of the changes following conventional commit best practices:
-- Maximum 50 characters
-- Present tense, imperative mood ("add" not "added")
-- No period at the end
-- Clear and descriptive
+Create concise, impactful summary following conventional commit standards (≤50 characters, imperative mood, clear and specific).
 
-Present your suggestion and ask:
-
-"I suggest: **[your-suggestion]** ([character-count] characters)
-
-Your choice:
-1. Accept this message
-2. Provide your own message
-3. See 5 alternative suggestions"
-
-If the user provides their own message and it exceeds 50 characters:
-- ⚠️ Warn about the length limit
-- Explain why 50 characters is best practice (git log readability in terminals)
-- Ask: "Would you like me to suggest shorter alternatives, or proceed with your message?"
-
-If the user accepts the suggestion for shorter alternatives, provide 5 alternative messages that:
-- Stay within the 50-character limit
-- Are aligned with the scope of the discovered changes
-- Follow conventional commit best practices
-- Maintain the essence of the user's original message
+Present suggestion with character count and analysis. Offer alternatives if requested or if user's message exceeds 50 characters.
 
 ## Task 5: Extract Ticket Reference 🎫
 
-Run `git branch --show-current` to get the current branch name.
+Analyze branch name for ticket references using pattern recognition:
+- **JIRA:** feature/PROJ-1234 → JIRA: PROJ-1234
+- **GitHub:** fix/issue-456 → GitHub: #456  
+- **GitLab:** feature/mr-789 → GitLab: !789
 
-Attempt to extract ticket information using these patterns:
-- **JIRA**: `feature/PROJ-1234-description` → `JIRA: PROJ-1234`
-- **GitHub**: `fix/issue-456-description` → `GitHub: #456`  
-- **GitLab**: `feature/mr-789-description` → `GitLab: !789`
-
-If extraction succeeds, ask:
-"Found ticket reference: **[extracted-reference]**
-Include this in the commit message? (y/n)"
-
-If extraction fails, ask:
-"Could not extract ticket from branch name: **[branch-name]**
-
-Which system are you using?
-1. JIRA (enter ticket like PROJ-1234)
-2. GitHub (enter issue number)
-3. GitLab (enter MR number)  
-4. Other (enter custom reference)
-5. None (skip ticket reference)"
+If extraction fails, prompt for ticket system and reference, or skip.
 
 ## Task 6: Assess Body Requirement 📄
 
-Based on the complexity of changes analyzed in Task 1, determine if a commit body is needed.
+Intelligently assess if commit body is needed based on change complexity and type.
 
-**Recommend body for:**
-- Changes affecting multiple files/components
-- Bug fixes that need explanation
-- Features requiring context
-- Breaking changes
+**Recommend body for:** Complex changes (>10 files or >200 lines), cross-component changes, bug fixes needing context, new features, breaking changes.
 
-**Skip body for:**
-- Simple one-line changes
-- Obvious documentation updates
-- Minor refactoring
+**Skip body for:** Simple changes (1-3 files, <50 lines), obvious updates, minor formatting.
 
-Present your assessment:
-"Based on the change complexity, I **[recommend/don't recommend]** adding a body because [reasoning].
-
-Your choice:
-1. Generate a structured body for me
-2. I'll write my own body
-3. Skip the body"
-
-If option 1 is chosen, create a concise body that:
-- Explains what changed and why
-- Provides context for the modifications
-- Notes any breaking changes or important details
-- Keeps it informative but brief
+If body recommended and accepted, generate structured content explaining what changed, why, and any implementation notes.
 
 ## Task 7: Present Final Message and Execute 👀
 
-Assemble the complete commit message in this format:
+Assemble complete conventional commit message and present with quality validation.
 
-```
-[type]([scope]): [subject]
+**Format:** `[type]([scope]): [subject]\n\n[ticket]\n\n[body]`
 
-[ticket-reference]
+**Quality Check:** Verify format compliance, length limits, imperative mood, and consistency.
 
-[body-if-included]
-```
+**User Options:**
+1. ✅ Copy to clipboard (recommended for IDE workflow)
+2. 🚀 Execute git commit immediately
+3. ✏️ Make modifications
+4. 🔄 Regenerate options
+5. ❌ Cancel
 
-Present the final message and ask:
+**For Clipboard:** Use appropriate OS command (pbcopy/xclip/clip) with proper escaping.
 
-"📝 **Complete commit message:**
-```
-[show-complete-message]
-```
+**For Git Commit:** 
+- Check staging status: if unstaged changes exist, offer to stage or copy to clipboard
+- Execute `git commit -m "[message]"` with proper escaping and validation
+- Confirm success with commit hash and summary
 
-Your choice:
-1. ✅ Copy to clipboard
-2. 🚀 Execute git commit  
-3. ✏️ Make changes
-4. ❌ Start over"
-
-### For clipboard option:
-Run the appropriate command for the user's OS:
-- **macOS**: `echo "[message]" | pbcopy`
-- **Linux**: `echo "[message]" | xclip -selection clipboard`
-- **Windows**: `echo "[message]" | clip`
-
-Confirm: "✅ Commit message copied to clipboard! Run `git commit` when ready."
-
-### For git commit option:
-Execute: `git commit -m "[complete-message-properly-escaped]"`
-
-Confirm the commit was successful and show the commit hash.
+Handle errors gracefully with specific guidance and recovery options.

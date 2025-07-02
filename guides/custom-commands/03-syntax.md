@@ -1224,8 +1224,8 @@ This comprehensive syntax reference covers everything from basic parameter handl
 - Version your commands for team collaboration
 
 ### **Next Steps**
-- **[Best Practices Guide](04-best-practices.md)** - Command design principles and optimization
-- **[Advanced Patterns](05-advanced.md)** - Complex workflows and meta-commands
-- **[Team Collaboration](06-team.md)** - Sharing strategies and standards
+- **[Best Practices Guide](05-best-practices.md)** - Command design principles and optimization
+- **[Advanced Workflows](04-advanced-workflows.md)** - Complex workflows and meta-commands
+- **[Team Collaboration](09-team-collaboration.md)** - Sharing strategies and standards
 
 Your custom commands can now be as sophisticated as traditional CLI tools while maintaining the simplicity and power of Claude Code integration! 🚀

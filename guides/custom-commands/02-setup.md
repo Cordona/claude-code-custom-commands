@@ -530,8 +530,8 @@ find ~/.claude/commands -type l
 
 1. **Explore Examples**: Browse the [example commands](../../commands/) for inspiration
 2. **Learn Syntax**: Read the [Syntax Reference](03-syntax.md) for advanced features
-3. **Best Practices**: Check out [Best Practices](04-best-practices.md) for command design
-4. **Team Setup**: Review [Team Collaboration](06-team.md) for sharing strategies
+3. **Best Practices**: Check out [Best Practices](05-best-practices.md) for command design
+4. **Team Setup**: Review [Team Collaboration](09-team-collaboration.md) for sharing strategies
 
 ### Building Your Command Library
 
