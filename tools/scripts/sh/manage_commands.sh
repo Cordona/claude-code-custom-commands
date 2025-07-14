@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+[ "$1" = -x ] && shift && set -x
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
 # Portable shebang that works on macOS, Linux, and Windows (Git Bash/WSL/Cygwin)
 
 # =============================================================================
@@ -329,7 +332,7 @@ prompt_with_retry() {
     done
 
     log "ERROR" "Invalid choice. Valid options: $valid_options"
-    ((retries++))
+    ((retries++)) || true
 
     if [[ $retries -ge $max_retries ]]; then
       log "ERROR" "Maximum retries reached. Using default: $default_value"
@@ -567,7 +570,7 @@ validate_and_setup_directories() {
         break
       else
         log "ERROR" "Invalid input. Please enter 'yes' or 'no'."
-        ((retries++))
+        ((retries++)) || true
         if [[ $retries -ge $MAX_RETRIES ]]; then
           log "ERROR" "Maximum retries reached. Global operations disabled."
           export GLOBAL_AVAILABLE=false
@@ -635,7 +638,7 @@ prompt_for_scope_choice() {
         ;;
       *)
         log "ERROR" "Invalid choice '$scope_choice'. Please enter 'global' or 'project'."
-        ((retries++))
+        ((retries++)) || true
         if [[ $retries -ge $MAX_RETRIES ]]; then
           log "ERROR" "Maximum retries reached. Defaulting to global scope."
           export SELECTED_SCOPE="global"
@@ -696,7 +699,7 @@ setup_project_scope() {
 
     if [[ -z "$project_path" ]]; then
       log "ERROR" "Project path cannot be empty. Please provide a valid path."
-      ((retries++))
+      ((retries++)) || true
     else
       # Expand tilde and relative paths (portable)
       case "$project_path" in
@@ -708,7 +711,7 @@ setup_project_scope() {
 
       if [[ ! -d "$project_path" ]]; then
         log "ERROR" "Directory does not exist: $project_path"
-        ((retries++))
+        ((retries++)) || true
       else
         # Check if .claude directory exists
         if [[ ! -d "$project_path/.claude" ]]; then
@@ -734,7 +737,7 @@ setup_project_scope() {
             log "SUCCESS" "Created commands directory: $commands_dir"
           else
             log "ERROR" "Failed to create commands directory: $commands_dir"
-            ((retries++))
+            ((retries++)) || true
             if [[ $retries -ge $MAX_RETRIES ]]; then
               log "ERROR" "Maximum retries reached. Switching to global scope."
               export SELECTED_SCOPE="global"
@@ -883,7 +886,7 @@ prompt_for_action_type() {
         ;;
       *)
         log "ERROR" "Invalid choice. Please select a valid action."
-        ((retries++))
+        ((retries++)) || true
         if [[ $retries -ge $MAX_RETRIES ]]; then
           log "ERROR" "Maximum retries reached. Defaulting to 'list'."
           export SELECTED_ACTION="list"
@@ -929,9 +932,7 @@ copy_embedded_dependencies() {
     return $SUCCESS
   fi
 
-  local script_dir
-  script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-  local embedded_source_dir="$script_dir/../../../embedded"
+  local embedded_source_dir="${SCRIPT_DIR}/../../../embedded"
   local embedded_target_dir="$target_base_dir/embedded"
 
   # Ensure embedded target directory exists
@@ -945,7 +946,7 @@ copy_embedded_dependencies() {
 
   # Process each dependency
   for dependency in $dependencies; do
-    ((total_count++))
+    ((total_count++)) || true
     local source_file="$embedded_source_dir/$dependency"
     local target_file="$embedded_target_dir/$dependency"
 
@@ -957,7 +958,7 @@ copy_embedded_dependencies() {
 
     if cp "$source_file" "$target_file"; then
       log "SUCCESS" "Embedded dependency copied: $dependency"
-      ((success_count++))
+      ((success_count++)) || true
     else
       log "ERROR" "Failed to copy embedded dependency: $dependency"
     fi
@@ -1017,7 +1018,7 @@ cleanup_orphaned_embedded() {
       continue
     fi
 
-    ((total_embedded++))
+    ((total_embedded++)) || true
     local embedded_name
     embedded_name=$(basename "$embedded_file")
     local ref_count
@@ -1049,7 +1050,7 @@ cleanup_orphaned_embedded() {
       local orphaned_file="$embedded_dir/$orphaned"
       if rm -f "$orphaned_file"; then
         log "SUCCESS" "Removed orphaned embedded command: $orphaned"
-        ((removed_count++))
+        ((removed_count++)) || true
 
         # Unified cleanup after embedded file removal
         unified_cleanup_after_file_removal "$orphaned_file" "embedded"
@@ -1077,9 +1078,7 @@ validate_embedded_dependencies() {
     return $SUCCESS
   fi
 
-  local script_dir
-  script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-  local embedded_source_dir="$script_dir/../../../embedded"
+  local embedded_source_dir="${SCRIPT_DIR}/../../../embedded"
 
   if [[ ! -d "$embedded_source_dir" ]]; then
     log "ERROR" "Embedded commands source directory not found: $embedded_source_dir"
@@ -1145,9 +1144,7 @@ execute_copy_operation() {
   echo
 
   # Get source directory path relative to script
-  local script_dir
-  script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-  local source_dir="$script_dir/../../../commands"
+  local source_dir="${SCRIPT_DIR}/../../../commands"
 
   if [[ ! -d "$source_dir" ]]; then
     log "ERROR" "Source commands directory not found: $source_dir"
@@ -1187,7 +1184,7 @@ execute_copy_operation() {
         ;;
       *)
         log "ERROR" "Invalid choice. Please enter 1, 2, or 3."
-        ((retries++))
+        ((retries++)) || true
         if [[ $retries -ge $MAX_RETRIES ]]; then
           log "ERROR" "Maximum retries reached. Cancelling operation."
           return $FAILURE
@@ -1332,7 +1329,7 @@ execute_update_operation() {
       break
     else
       log "ERROR" "Invalid selection. Please enter a number (1-${#commands[@]}), 'all', or 'cancel'."
-      ((retries++))
+      ((retries++)) || true
       if [[ $retries -ge $MAX_RETRIES ]]; then
         log "ERROR" "Maximum retries reached. Cancelling update operation."
         return $FAILURE
@@ -1403,7 +1400,7 @@ execute_update_operation() {
         ;;
       *)
         log "ERROR" "Invalid option. Please select edit, description, tools, backup, or cancel."
-        ((retries++))
+        ((retries++)) || true
         if [[ $retries -ge $MAX_RETRIES ]]; then
           log "ERROR" "Maximum retries reached. Defaulting to edit mode."
           update_command_in_editor "$selected_command" "$cmd_name" "$cmd_category"
@@ -1676,7 +1673,7 @@ update_command_with_backup() {
           confirmation_success=true
           break
         else
-          ((retry_count++))
+          ((retry_count++)) || true
           if [[ $retry_count -lt $max_retries ]]; then
             echo -e "${COLOR_YELLOW}❌ Incorrect confirmation. Please type exactly: ${COLOR_RED}REMOVE BACKUP${COLOR_RESET}"
           fi
@@ -1721,9 +1718,7 @@ execute_update_all_commands() {
   log "INFO" "Starting bulk update of ${#commands[@]} commands"
 
   # Define source directory (relative to script location)
-  local script_dir
-  script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-  local source_dir="$script_dir/../../../commands"
+  local source_dir="${SCRIPT_DIR}/../../../commands"
   local target_dir
   target_dir=$(get_target_directory)
 
@@ -1742,7 +1737,7 @@ execute_update_all_commands() {
   # Check if source directory exists
   if [[ ! -d "$source_dir" ]]; then
     log "ERROR" "Source commands directory not found: $source_dir_display"
-    log "ERROR" "Script location: $script_dir"
+    log "ERROR" "Script location: ${SCRIPT_DIR}"
     log "ERROR" "Expected source path: $source_dir"
     return $FAILURE
   fi
@@ -1885,7 +1880,7 @@ execute_update_all_commands() {
       # Compare files to see if there are changes
       if cmp -s "$source_file" "$target_file"; then
         printf "   %-*s ... 📋 No changes\n" "$max_name_width" "$cmd_name"
-        ((no_change_count++))
+        ((no_change_count++)) || true
         continue
       else
         # Files are different, calculate changes and update
@@ -1924,7 +1919,7 @@ execute_update_all_commands() {
         # Copy and report result
         if cp "$source_file" "$target_file"; then
           printf "   %-*s ... \033[32m+%s\033[0m \033[31m-%s\033[0m lines\n" "$max_name_width" "$cmd_name" "$additions" "$deletions"
-          ((updated_count++))
+          ((updated_count++)) || true
 
           # Handle embedded dependencies for updated file using reusable function
           local claude_root
@@ -1932,14 +1927,14 @@ execute_update_all_commands() {
           handle_embedded_dependencies_on_update "$target_file" "$claude_root"
         else
           printf "   %-*s ... ❌ Update failed\n" "$max_name_width" "$cmd_name"
-          ((failed_count++))
+          ((failed_count++)) || true
         fi
       fi
     else
       # New file
       if cp "$source_file" "$target_file"; then
         printf "   %-*s ... ✨ New file\n" "$max_name_width" "$cmd_name"
-        ((new_count++))
+        ((new_count++)) || true
 
         # Handle embedded dependencies for new file using reusable function
         local claude_root
@@ -1947,7 +1942,7 @@ execute_update_all_commands() {
         handle_embedded_dependencies_on_copy "$target_file" "$claude_root"
       else
         printf "   %-*s ... ❌ Copy failed\n" "$max_name_width" "$cmd_name"
-        ((failed_count++))
+        ((failed_count++)) || true
       fi
     fi
   done
@@ -2001,7 +1996,7 @@ execute_update_all_commands() {
         confirmation_success=true
         break
       else
-        ((retry_count++))
+        ((retry_count++)) || true
         if [[ $retry_count -lt $max_retries ]]; then
           echo -e "${COLOR_YELLOW}❌ Incorrect confirmation. Please type exactly: ${COLOR_RED}REMOVE BACKUP${COLOR_RESET}"
         fi
@@ -2159,7 +2154,7 @@ copy_all_commands() {
         # Find all .md files in this category
         while IFS= read -r -d '' file; do
           command_files+=("$file")
-          ((total_files++))
+          ((total_files++)) || true
         done < <(find "$category_path" -name "*.md" -type f -print0 2>/dev/null)
       fi
     fi
@@ -2198,9 +2193,9 @@ copy_all_commands() {
     echo "📦 Processing: $relative_path"
 
     if copy_single_file "$source_file" "$target_dir" "$breadcrumb"; then
-      ((copied_files++))
+      ((copied_files++)) || true
     else
-      ((failed_files++))
+      ((failed_files++)) || true
       echo "   ❌ Failed to copy: $relative_path"
     fi
   done
@@ -2322,7 +2317,7 @@ display_directories_menu() {
       local file_count
       file_count=$(find "$dir" -name "*.md" -type f | wc -l)
       printf "    %d) %s/ (%d commands)\n" "$option_num" "$dir_name" "$file_count"
-      ((option_num++))
+      ((option_num++)) || true
     done
     echo
   fi
@@ -2345,7 +2340,7 @@ display_files_menu() {
       local file_name
       file_name=$(basename "$file" .md)
       printf "    %d) %s.md\n" "$option_num" "$file_name"
-      ((option_num++))
+      ((option_num++)) || true
     done
     echo
   fi
@@ -2629,18 +2624,18 @@ copy_directory_contents() {
       fi
 
       if cp -r "$item_path" "$target_dir/" 2>/dev/null; then
-        ((copied_items++))
+        ((copied_items++)) || true
         echo "   ✅ Copied: $item_name/"
       else
-        ((failed_items++))
+        ((failed_items++)) || true
         echo "   ❌ Failed: $item_name/"
       fi
     elif [[ -f "$item_path" ]]; then
       if cp "$item_path" "$target_dir/" 2>/dev/null; then
-        ((copied_items++))
+        ((copied_items++)) || true
         echo "   ✅ Copied: $item_name"
       else
-        ((failed_items++))
+        ((failed_items++)) || true
         echo "   ❌ Failed: $item_name"
       fi
     fi
@@ -2825,7 +2820,7 @@ cleanup_orphaned_embedded_after_command_removal() {
 
         if rm -f "$embedded_file"; then
           log "SUCCESS" "Removed orphaned embedded command: $embedded_name"
-          ((removed_count++))
+          ((removed_count++)) || true
         else
           log "ERROR" "Failed to remove embedded command: $embedded_name"
         fi
@@ -2867,7 +2862,7 @@ cleanup_empty_directories_comprehensive() {
 
   # Keep cleaning until no more directories can be removed
   while [[ $cleanup_rounds -lt $max_rounds ]]; do
-    ((cleanup_rounds++))
+    ((cleanup_rounds++)) || true
     local round_cleaned=0
 
     log "INFO" "Cleanup round $cleanup_rounds..."
@@ -2894,8 +2889,8 @@ cleanup_empty_directories_comprehensive() {
 
           if rmdir "$dir" 2>/dev/null; then
             log "SUCCESS" "Removed empty directory: $dir_relative"
-            ((cleaned_dirs++))
-            ((round_cleaned++))
+            ((cleaned_dirs++)) || true
+            ((round_cleaned++)) || true
           fi
         fi
       fi
@@ -2926,7 +2921,7 @@ cleanup_empty_directories_comprehensive() {
       if [[ "$remove_claude" == "$YES" ]]; then
         if rm -rf "$claude_root" 2>/dev/null; then
           log "SUCCESS" "Removed empty .claude directory: $claude_root"
-          ((cleaned_dirs++))
+          ((cleaned_dirs++)) || true
         else
           log "WARNING" "Failed to remove .claude directory: $claude_root"
         fi
@@ -3097,7 +3092,7 @@ handle_embedded_dependencies_on_delete() {
 
         if rm -f "$orphaned_file"; then
           log "SUCCESS" "Removed orphaned embedded command: $orphaned"
-          ((removed_count++))
+          ((removed_count++)) || true
 
           # Clean up directories after removing embedded file
           unified_cleanup_after_file_removal "$orphaned_file" "embedded"
@@ -3199,7 +3194,7 @@ perform_safe_removal() {
 
           if rm "$command"; then
             log "SUCCESS" "Removed: $(basename "$command")"
-            ((removed_count++))
+            ((removed_count++)) || true
 
             # Handle embedded dependencies for this specific deletion
             if [[ -n "$embedded_deps_before_deletion" ]]; then
@@ -3215,7 +3210,7 @@ perform_safe_removal() {
             unified_cleanup_after_file_removal "$command" "individual"
           else
             log "ERROR" "Failed to remove: $(basename "$command")"
-            ((failed_count++))
+            ((failed_count++)) || true
           fi
         else
           log "WARNING" "Command file not found (already removed?): $(basename "$command")"
@@ -3275,7 +3270,7 @@ perform_safe_removal() {
             confirmation_success=true
             break
           else
-            ((retry_count++))
+            ((retry_count++)) || true
             if [[ $retry_count -lt $max_retries ]]; then
               echo -e "${COLOR_YELLOW}❌ Incorrect confirmation. Please type exactly: ${COLOR_RED}REMOVE BACKUP${COLOR_RESET}"
             fi
@@ -3306,7 +3301,7 @@ perform_safe_removal() {
       break
     else
       log "ERROR" "Invalid input. Please enter 'yes' or 'no'."
-      ((retries++))
+      ((retries++)) || true
       if [[ $retries -ge $MAX_RETRIES ]]; then
         log "ERROR" "Maximum retries reached. Cancelling removal..."
         break
